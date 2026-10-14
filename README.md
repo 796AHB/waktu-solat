@@ -68,11 +68,20 @@ margin.
 
 ## Live
 
-**https://worldclock-two.vercel.app** — production deployment (Vercel project
-`ahb14/worldclock`). Installable, works offline.
+| | |
+|---|---|
+| **https://worldclock-two.vercel.app** | Vercel production (`ahb14/worldclock`) |
+| **https://796ahb.github.io/waktu-solat/** | GitHub Pages, built from `main` |
+| **https://github.com/796AHB/waktu-solat** | source |
+
+Both are installable and work offline. Redeploy with `vercel --prod`; GitHub
+Pages rebuilds on every push to `main`.
+
+If the git push fails with `RPC failed; HTTP 400`, your network or proxy is
+choking on the pack — bump the buffer:
 
 ```bash
-vercel --prod      # redeploy after a change
+git -c http.postBuffer=524288000 push
 ```
 
 ## Run it locally
