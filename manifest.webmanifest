@@ -1,0 +1,29 @@
+{
+  "name": "Waktu Solat",
+  "short_name": "Waktu Solat",
+  "description": "Jadual waktu solat yang dikira automatik daripada lokasi anda. Imsak, Subuh, Zohor, Asar, Maghrib dan Isyak. Boleh guna tanpa internet.",
+  "start_url": "./",
+  "scope": "./",
+  "id": "waktu-solat",
+  "display": "standalone",
+  "display_override": ["standalone", "minimal-ui", "browser"],
+  "orientation": "any",
+  "background_color": "#070b16",
+  "theme_color": "#0b1120",
+  "categories": ["lifestyle", "utilities"],
+  "lang": "ms",
+  "dir": "ltr",
+  "icons": [
+    { "src": "./icons/icon-192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/icon-512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "./icons/maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ],
+  "shortcuts": [
+    {
+      "name": "Tetapan lokasi",
+      "short_name": "Tetapan",
+      "url": "./?settings=1",
+      "icons": [{ "src": "./icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

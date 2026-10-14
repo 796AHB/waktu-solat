@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="ms" data-theme="auto">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Waktu Solat</title>
+<meta name="description" content="Jadual waktu solat yang dikira automatik daripada lokasi anda: Imsak, Subuh, Zohor, Asar, Maghrib dan Isyak. Boleh guna tanpa internet.">
+<meta name="theme-color" content="#0b1120">
+<meta name="color-scheme" content="dark light">
+<link rel="manifest" href="./manifest.webmanifest">
+<link rel="icon" href="./icons/favicon-64.png" sizes="64x64" type="image/png">
+<link rel="apple-touch-icon" href="./icons/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Waktu Solat">
+<link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+<div class="sky" aria-hidden="true"></div>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand__mark" aria-hidden="true"></span>
+    <div>
+      <h1>Waktu Solat</h1>
+      <p class="brand__sub" id="localLine">mencari lokasi anda…</p>
+    </div>
+  </div>
+  <div class="topbar__actions">
+    <button class="btn btn--ghost" id="installBtn" hidden>Pasang</button>
+    <button class="btn btn--ghost" id="settingsBtn" aria-haspopup="dialog">Tetapan</button>
+    <button class="btn btn--ghost" id="themeBtn" aria-label="Tukar tema">Tema</button>
+  </div>
+</header>
+
+<main>
+  <section class="solat" id="solat" aria-label="Jadual waktu solat"></section>
+  <p class="solat__note" id="geoNote" hidden></p>
+</main>
+
+<footer class="foot">
+  <p>Dihira sendiri pada peranti · berfungsi tanpa internet · <span id="offlineState">dalam talian</span></p>
+  <button class="btn btn--link" id="locateBtn">Guna lokasi GPS yang tepat</button>
+</footer>
+
+<dialog class="sheet" id="settings" aria-label="Tetapan">
+  <form method="dialog" class="sheet__inner">
+    <header class="sheet__head">
+      <h2>Tetapan</h2>
+      <button class="btn btn--ghost" value="close">Tutup</button>
+    </header>
+
+    <fieldset class="sheet__block">
+      <legend>Lokasi</legend>
+      <label class="row"><span>Bandar</span>
+        <select id="optLocation"></select>
+      </label>
+      <p class="hint" id="locationHint"></p>
+    </fieldset>
+
+    <fieldset class="sheet__block">
+      <legend>Perhitungan</legend>
+      <label class="row"><span>Kaedah kira</span>
+        <select id="optMethod"></select>
+      </label>
+      <label class="row"><span>Margin keselamatan</span>
+        <select id="optMargin">
+          <option value="0">0 minit</option>
+          <option value="1">1 minit</option>
+          <option value="2">2 minit</option>
+          <option value="3">3 minit</option>
+          <option value="5">5 minit</option>
+          <option value="7">7 minit</option>
+          <option value="10">10 minit</option>
+        </select>
+      </label>
+    </fieldset>
+
+    <fieldset class="sheet__block">
+      <legend>Paparan</legend>
+      <label class="row"><span>Masa 24 jam</span><input type="checkbox" id="opt24"></label>
+      <label class="row"><span>Langit mengikut waktu siang</span><input type="checkbox" id="optAuto" checked></label>
+      <label class="row"><span>Papar masa solar</span><input type="checkbox" id="optApparent" checked></label>
+    </fieldset>
+
+    <div class="sheet__foot">
+      <button class="btn btn--ghost" type="button" id="resetBtn">Set semula</button>
+      <button class="btn btn--primary" value="close">Selesai</button>
+    </div>
+  </form>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite"></div>
+
+<script>
+  // Surface runtime errors so the UI smoke test can report them.
+  window.__errors = [];
+  addEventListener('error', (e) => window.__errors.push(String(e.message)));
+  addEventListener('unhandledrejection', (e) => window.__errors.push(String(e.reason)));
+</script>
+<script type="module" src="./app.js"></script>
+</body>
+</html>
